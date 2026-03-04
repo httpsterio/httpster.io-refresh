@@ -1,0 +1,14 @@
+{
+  "name": "httpster.io",
+  "type": "module",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "4.0.0-alpha.6"
+  }
+}
