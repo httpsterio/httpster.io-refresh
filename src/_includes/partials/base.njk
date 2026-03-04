@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {% include "partials/head.njk" %}
+</head>
+<body>
+  {% include "partials/menu.njk" %}
+  <main>
+    {{ content | safe }}
+  </main>
+  {% include "partials/footer.njk" %}
+</body>
+</html>
