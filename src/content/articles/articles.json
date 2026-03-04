@@ -1,4 +1,9 @@
 {
   "layout": "layouts/post.njk",
-  "permalink": "/articles/{{ page.fileSlug }}/"
+  "permalink": "/article/{{ page.fileSlug }}/",
+  "category": "article",
+  "theme": [
+      "turquoise",
+      "dark"
+    ]
 }
