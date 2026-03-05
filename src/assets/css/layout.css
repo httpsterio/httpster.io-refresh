@@ -1,8 +1,16 @@
+html {
+  background-color: pink;
+}
+
 body {
+  background-color: blue;
   padding: var(--space-lg);
 }
 
-.container {
+main {
   max-width: var(--max-width);
   margin-inline: auto;
+  background-color: white;
+  padding-inline: var(--space-lg);
+  padding-block: var(--space-xs);
 }

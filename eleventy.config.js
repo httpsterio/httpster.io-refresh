@@ -1,7 +1,7 @@
 import path from "path";
 import { VentoPlugin } from "eleventy-plugin-vento";
 import { collections } from "./config/collections.js";
-
+import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 
 export default function(config) {
 
@@ -20,6 +20,8 @@ export default function(config) {
       includes: path.resolve("src/_includes"),
     },
   });
+
+  config.addPlugin(syntaxHighlight);
 
   // Passthrough Copy
   config.addPassthroughCopy("src/assets");
