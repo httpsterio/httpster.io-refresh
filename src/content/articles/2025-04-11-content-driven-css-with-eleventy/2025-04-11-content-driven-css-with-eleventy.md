@@ -9,7 +9,7 @@ tags:
   - NJK
   - JS
   - Eleventy
-socialimage: ""
+socialimage: /assets/images/articles/2025/cover-content-css.jpg
 ---
 If you've ever taken a peek at my [content stream](/main), you'll know that I use an assortment of colours to denote post categories.
 

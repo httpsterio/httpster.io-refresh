@@ -1,4 +1,6 @@
 {
-  "layout": "layouts/post.njk",
-  "permalink": "/projects/{{ page.fileSlug }}/"
+  "layout": "layouts/post",
+  "category": "project",
+  "permalink": "/project/{{ title | slugify }}/index.html",
+  "theme": ["orange", "dark"]
 }
