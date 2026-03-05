@@ -27,18 +27,18 @@ My content is separated into sub-folders. I have a `src/content/$content-type` l
 
 If you create a `folder-name.json` file inside the similarily named directory, you can use that json file to prepopulate your YAML front matter. This means, you don't have to type `category: article` for every post you have. It's pretty nice. This is what my `projects.json` looks like:
 
-{% raw %}
 
 ```json
+{{ echo }}
 {
   "layout": "post",
   "category": "project",
   "permalink": "//project/{{ title | slugify }}/index.html",
   "theme": ["blue", "light"]
 }
+{{ /echo }}
 ```
 
-{% endraw %}
 
 So, this means that every post that is in `src/content/projects/` will get the specified layout, category, permalink and theme automatically set in the front matter for each post.
 
@@ -77,9 +77,9 @@ I made a `themes.css.11ty.js` file and it looks like this:
 
 themes.css.11ty.js
 
-{% raw %}
 
 ```css
+{{ echo }}
 module.exports = class {
   data() {
     return {
@@ -130,15 +130,15 @@ module.exports = class {
     }).join("\n\n");
   }
 };
+{{ /echo }}
 ```
 
-{% endraw %}
 
 themes.css.njk
 
-{% raw %}
 
 ```js
+{{ echo }}
 ---
 permalink: "/assets/css/themes.css"
 eleventyExcludeFromCollections: true
@@ -168,9 +168,9 @@ eleventyExcludeFromCollections: true
 }
 
 {% endfor %}
+{{ /echo }}
 ```
 
-{% endraw %}
 
 _In short what the snippet above does:_
 
@@ -185,7 +185,7 @@ _In short what the snippet above does:_
 
 This will render out to a regular CSS file with all of your themes as their own classes, but you could even take it one step further.
 
-You could even use a {% raw %}`{% if theme[1] == "dark" %}`{% endraw %} block to create separate CSS for those themes that work with dark colours and those that work with light colours for example. Or you could randomize the colour values to create a random assortment of themes on each build!
+You could even use a {{ echo }}`{% if theme[1] == "dark" %}`{{ /echo }} block to create separate CSS for those themes that work with dark colours and those that work with light colours for example. Or you could randomize the colour values to create a random assortment of themes on each build!
 
 ## Using the CSS
 
@@ -193,24 +193,24 @@ Now it's time to actually use the CSS we just created.
 
 First off, you'll want to include the created file. I also have added a hashing function to cache bust the file between builds.
 
-{% raw %}
 
 ```html
+{{ echo }}
   {% set assetHash = global.random() %}
   <link rel="stylesheet" href="/assets/css/themes.css?{{ assetHash }}" />
+{{ /echo }}
 ```
 
-{% endraw %}
 
 In my Nunjucks template I can now access the CSS classes like so
 
-{% raw %}
 
 ```html
+{{ echo }}
 <article class="{% if post.data.theme %}theme-{{ post.data.theme[0] }}{% endif %}"></article>
+{{ /echo }}
 ```
 
-{% endraw %}
 
 So in the case of my projects, we're checking if the project file returns a theme value and then we add the `theme-blue` class to the article.
 

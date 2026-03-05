@@ -7,7 +7,7 @@ draft: false
 tags:
   - Jypeli
   - C#
-socialimage: "/assets/images/articles/2025/cover-content-css.jpg"
+socialimage: ""
 ---
 
 ## Table of Content

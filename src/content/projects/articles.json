@@ -1,6 +1,0 @@
-{
-  "layout": "layouts/post",
-  "category": "article",
-  "permalink": "//article/{{ title | slugify }}/index.html",
-  "theme": ["turquoise", "dark"]
-}

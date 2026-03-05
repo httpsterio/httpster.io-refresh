@@ -2,9 +2,20 @@ import path from "path";
 import { VentoPlugin } from "eleventy-plugin-vento";
 import { collections } from "./config/collections.js";
 
+
 export default function(config) {
 
-  config.addPlugin(VentoPlugin);
+  config.addPlugin(VentoPlugin, {
+    plugins: [],
+    shortcodes: true,
+    pairedShortcodes: true,
+    filters: true,
+    autotrim: false,
+
+    ventoOptions: {
+      includes: path.resolve("src/_includes"),
+    },
+  });
 
   // Passthrough Copy
   config.addPassthroughCopy("src/assets");
@@ -41,8 +52,8 @@ export default function(config) {
 
   return {
     dir: { input: "src", output: "_site" },
-    templateFormats: ["njk", "md"],
-    markdownTemplateEngine: "njk",
-    htmlTemplateEngine: "njk",
+    templateFormats: ["vto", "njk", "md"],
+    markdownTemplateEngine: "vto",
+    htmlTemplateEngine: "vto",
   };
 }

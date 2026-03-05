@@ -1,6 +1,6 @@
 {
   "layout": "layouts/post",
   "category": "project",
-  "permalink": "/project/{{ title | slugify }}/index.html",
+  "permalink": "/project/{{ title |> slugify }}/index.html",
   "theme": ["orange", "dark"]
 }

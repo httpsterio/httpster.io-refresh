@@ -7,7 +7,7 @@ draft: false
 tags:
   - life
   - ADHD
-socialimage: "/assets/images/articles/2025/cover-productivity.jpg"
+socialimage: "cover-productivity.jpg"
 sharedlink: 
   - "https://social.lol/@sami/113795577162392203"
 ---

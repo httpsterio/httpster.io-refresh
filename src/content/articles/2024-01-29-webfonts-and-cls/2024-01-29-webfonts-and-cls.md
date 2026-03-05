@@ -37,7 +37,7 @@ I had set _Vollkorn_ as the main body typeface and serif as the fallback with th
 My issue specifically stemmed from the fact that 16pt in one font doesn't equal 16pt in another font. Space between letters and words in two fonts can be different, letters can have a different width as well as the ascenders and descenders can vary in size. A whole lot of variables.
 
 <figure>
-  <img src="/assets/images/articles/2024/font overlap.webp" alt="Vollkorn and Times New Roman fonts being compared on top of each other to illustrate their differences" title="Vollkorn and Times New Roman fonts being compared on top of each other to illustrate their differences" />
+  <img src="font overlap.webp" alt="Vollkorn and Times New Roman fonts being compared on top of each other to illustrate their differences" title="Vollkorn and Times New Roman fonts being compared on top of each other to illustrate their differences" />
   <figcaption>Vollkorn in black and Times New Roman in red overlaid</figcaption>
 </figure>
 
@@ -55,7 +55,7 @@ If the webfont in question is on Google Fonts, Malte's tool will automatically g
 In the case that the font isn't available on Google Fonts, Monica's tool comes in handy as it's relatively easy to eyeball the dimensions with it.
 
 <figure>
-  <img src="/assets/images/articles/2024/fontcomparison.webp" alt="Vollkorn and Times New Roman fonts being compared side by side with corrections applied" title="Vollkorn and Times New Roman fonts being compared side by side with corrections applied" />
+  <img src="fontcomparison.webp" alt="Vollkorn and Times New Roman fonts being compared side by side with corrections applied" title="Vollkorn and Times New Roman fonts being compared side by side with corrections applied" />
   <figcaption>Vollkorn on the left, Times New Roman with the corrections on the right</figcaption>
 </figure>
 

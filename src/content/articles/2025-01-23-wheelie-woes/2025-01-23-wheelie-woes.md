@@ -6,7 +6,7 @@ writingtime: "1 hour"
 draft: false
 tags:
   - life
-socialimage: "/assets/images/articles/2025/cover-wheel-woes.jpg"
+socialimage: "cover-wheel-woes.jpg"
 sharedlink: 
   - "https://social.lol/@sami/113877697157842980"
 ---
@@ -16,7 +16,7 @@ I had a tiny mishap with the car. When I went to pick up my wife from work last 
 We didn't get far from the lot when the ride started to feel a tiny bit bumpy. The roads are filled with snow and ice so I didn't think too much about it, it's normal to feel a bit bumpy. Still, I kept following the situation. Once we hit a better cleared patch of road and the ride still felt bumpy, I knew something was off and thus, we pulled over.
 
 <figure class="mb-xl">
-  <img src="/assets/images/articles/2025/tire.webp" alt="A car with a flat tire" title="Screenshot of Github's UI with the fork-button hilighted" />
+  <img src="tire.webp" alt="A car with a flat tire" title="Screenshot of Github's UI with the fork-button hilighted" />
   <figcaption>The sad, flat situation</figcaption>
 </figure>
 
