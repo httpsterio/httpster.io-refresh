@@ -1,4 +1,5 @@
 import path from "path";
+import { collections } from "./config/collections.js";
 
 export default function(config) {
 
@@ -7,19 +8,9 @@ export default function(config) {
   config.addPassthroughCopy("src/content/**/*.{jpg,jpeg,png,webp,avif,gif,svg,webm,mp4}");
 
   // Collections
-  config.addCollection("articles",   c => c.getFilteredByGlob("src/content/articles/**/*.md"));
-  config.addCollection("projects", c => c.getFilteredByGlob("src/content/projects/**/*.md"));
-  config.addCollection("reviews", c => c.getFilteredByGlob("src/content/reviews/**/*.md"));
-  config.addCollection("echoes", c => c.getFilteredByGlob("src/content/echoes/**/*.md"));
-
-  config.addCollection("everything", c =>
-    c.getFilteredByGlob(["src/content/articles/**/*.md", "src/content/projects/**/*.md", "src/content/reviews/**/*.md", "src/content/echoes/**/*.md"])
-  );
-
-  // Main content without echo posts.
-  config.addCollection("mainContent", c =>
-    c.getFilteredByGlob(["src/content/articles/**/*.md", "src/content/projects/**/*.md", "src/content/reviews/**/*.md"])
-  );
+  for (const [name, fn] of Object.entries(collections)) {
+    config.addCollection(name, fn);
+  }
 
 
   // Rewrite relative media paths in content to match passthrough copy output location
