@@ -7,6 +7,17 @@
   --color-link: #0066cc;
   --color-link-visited: #551a8b;
 
+  --color-dark: #0c0c0c;
+  --color-light: #F3F3F3;
+  --color-red: #e5633e;
+  --color-turquoise: #1ed397;
+  --color-green: #59D376;
+  --color-yellow: #fdb320;
+  --color-tangerine: #f18b2f;
+  --color-orange: #f79f28;
+  --color-blue: #1E29F9;
+  --color-purple: #4f0eb8;
+
   /* Spacing */
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
@@ -26,5 +37,5 @@
   --font-mono: ui-monospace, monospace;
 
   /* Layout */
-  --max-width: 80ch;
+  --max-width: 100ch;
 }

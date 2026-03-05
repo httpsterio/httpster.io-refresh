@@ -21,7 +21,24 @@ export default function(config) {
     },
   });
 
-  config.addPlugin(syntaxHighlight);
+  config.addPlugin(syntaxHighlight, {
+    // Line separator for line breaks
+    lineSeparator: "<br>",
+    templateFormats: ["*"],
+
+    // Add codeblock class as well as block language
+    preAttributes: {
+      tabindex: 0,
+      class: function ({ language }) {
+        return `codeblock language-${language}`;
+      },
+      // Added in 4.1.0 you can use callback functions too
+      "data-language": function ({ language, content, options }) {
+        return language;
+      }
+    },
+    codeAttributes: {},
+  });
 
   // Passthrough Copy
   config.addPassthroughCopy("src/assets");
@@ -50,9 +67,6 @@ export default function(config) {
       .replace(/(<source\b[^>]*\bsrc=")(?!https?:\/\/|\/|data:)([^"]+)(")/g,
         (_, pre, src, post) => `${pre}/${contentBase}/${src}${post}`);
   });
-
-  config.addWatchTarget("src/_includes/");
-  config.addWatchTarget("src/_includes/partials/");
 
   // Show device IP instead of just localhost
   config.setServerOptions({

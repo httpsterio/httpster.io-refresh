@@ -1,3 +1,11 @@
 .main-menu {
+  width: 100%;
   font-size: var(--text-2xl);
+  display: flex;
+  justify-content: center;
+}
+
+.main-menu a {
+  color: var(--color-light);
+  padding-inline: var(--space-md);
 }
