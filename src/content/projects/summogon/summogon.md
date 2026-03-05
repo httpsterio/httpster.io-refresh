@@ -3,7 +3,7 @@ title: Summogon
 date: "2024-04-15"
 description: "Sinister card game leaves players puzzled."
 draft: false
-socialimage: "/assets/images/projects/summogon/social-summogon.jpg"
+socialimage: "social-summogon.jpg"
 tags:
   - Video Game
   - Unity
@@ -15,7 +15,7 @@ sharedlink:
 ---
 
 <figure>
-  <img src="/assets/images/projects/summogon/summogon-screenshot.webp" alt="Screenshot from the game Summogon" title="Screenshot from the game Summogon"/>
+  <img src="summogon-screenshot.webp" alt="Screenshot from the game Summogon" title="Screenshot from the game Summogon"/>
   <figcaption>Screenshot from the game</figcaption>
 </figure>
 

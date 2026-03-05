@@ -3,7 +3,7 @@ title: Snakes etc. On A Plain
 date: "2014-01-24"
 description: "Local co-op platformer that gets a bit hectic."
 draft: false
-socialimage: "/assets/images/projects/snakes/social-snakes.jpg"
+socialimage: "social-snakes.jpg"
 tags:
   - Video Game
   - Python
@@ -13,7 +13,7 @@ sharedlink:
 ---
 
 <figure>
-  <img src="/assets/images/projects/snakes/snakes-screenshot.webp" alt="Screenshot from the game Snakes etc. On A Plain" title="Screenshot from the game Snakes etc. On A Plain"/>
+  <img src="snakes-screenshot.webp" alt="Screenshot from the game Snakes etc. On A Plain" title="Screenshot from the game Snakes etc. On A Plain"/>
   <figcaption>Screenshot from the game</figcaption>
 </figure>
 

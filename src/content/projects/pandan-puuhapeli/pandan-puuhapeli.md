@@ -3,7 +3,7 @@ title: "Pandan Puuhapeli"
 date: "2013-04-24"
 description: "A Flash based edutainment game for kids."
 draft: false
-socialimage: "/assets/images/projects/panda/social-panda.jpg"
+socialimage: "social-panda.jpg"
 tags:
   - Video Game
   - Flash
@@ -13,7 +13,7 @@ sharedlink:
 ---
 
 <figure>
-  <img src="/assets/images/projects/panda/panda screenshot.webp" alt="Screenshot from Panda's activity game" title="Screenshot from Panda's activity game"/>
+  <img src="panda screenshot.webp" alt="Screenshot from Panda's activity game" title="Screenshot from Panda's activity game"/>
   <figcaption>Screenshot from the game</figcaption>
 </figure>
 

@@ -3,7 +3,7 @@ title: CueBit
 date: "2020-04-23"
 description: "A simple pool game made for university."
 draft: false
-socialimage: "/assets/images/projects/cuebit/social-cuebit.jpg"
+socialimage: "social-cuebit.jpg"
 tags:
   - Video Game
   - University
@@ -13,7 +13,7 @@ sharedlink:
 ---
 
 <figure>
-  <img src="/assets/images/projects/cuebit/cuebit-screenshot.webp" alt="Screenshot from the game CueBit" title="Screenshot from the game CueBit"/>
+  <img src="cuebit-screenshot.webp" alt="Screenshot from the game CueBit" title="Screenshot from the game CueBit"/>
   <figcaption>Screenshot from the game</figcaption>
 </figure>
 

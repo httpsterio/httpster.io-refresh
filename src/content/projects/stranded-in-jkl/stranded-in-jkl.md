@@ -3,7 +3,7 @@ title: Stranded in Jyväskylä
 date: "2015-02-26"
 description: "Game Jam gone awry... :c"
 draft: false
-socialimage: "/assets/images/projects/stranded/social-stranded.jpg"
+socialimage: "social-stranded.jpg"
 tags:
   - Video Game
   - Unity
@@ -13,7 +13,7 @@ sharedlink:
 ---
 
 <figure>
-  <img src="/assets/images/projects/stranded/stranded-screenshot.webp" alt="Screenshot from the game Stranded in Jyväskylä" title="Screenshot from the game Stranded in Jyväskylä"/>
+  <img src="stranded-screenshot.webp" alt="Screenshot from the game Stranded in Jyväskylä" title="Screenshot from the game Stranded in Jyväskylä"/>
   <figcaption>Screenshot from the game</figcaption>
 </figure>
 

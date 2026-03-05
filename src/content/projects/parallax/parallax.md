@@ -3,7 +3,7 @@ title: Parallax
 date: "2015-02-18"
 description: "MVP demo of a simple platformer game with tight controls and physics. Made as the final project for my minor in video games."
 draft: false
-socialimage: "/assets/images/projects/paradogs/social-paradogs.jpg"
+socialimage: "social-paradogs.jpg"
 tags:
   - Video Game
   - Unity
@@ -15,7 +15,7 @@ sharedlink:
 During my studies at the university of applied sciences, I completed an elective minor in video game production worth 19 ECTS study credits or roughly 500 hours. A majority of the time was spent working as teams producing a game.
 
 <figure>
-  <img src="/assets/images/projects/paradogs/paradogs-logo.webp" alt="Paradogs logo featuring a german shepheard dog with a parachute" title="Paradogs logo featuring a german shepheard dog with a parachute" />
+  <img src="paradogs-logo.webp" alt="Paradogs logo featuring a german shepheard dog with a parachute" title="Paradogs logo featuring a german shepheard dog with a parachute" />
   <figcaption>Paradogs logo featuring a snazzy doggo with a parachute</figcaption>
 </figure>
 
@@ -25,7 +25,7 @@ We had a website, marketing material and some cool email addresses like sami@par
 
 <figure>
   <video width="640" preload="auto" muted autoplay loop>
-    <source src="/assets/images/projects/paradogs/paradogs-outer.webm" type="video/webm" />
+    <source src="paradogs-outer.webm" type="video/webm" />
   </video>
   <figcaption>The intro features some bleak cityscapes</figcaption>
 </figure>

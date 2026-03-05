@@ -3,7 +3,7 @@ title: Kantelemania
 date: "2023-02-05"
 description: "Väinämöinen gets down with the funk."
 draft: false
-socialimage: "/assets/images/projects/kantelemania/social-kantelemania.jpg"
+socialimage: "social-kantelemania.jpg"
 tags:
   - Video Game
   - Unity
@@ -15,7 +15,7 @@ sharedlink:
 ---
 
 <figure>
-  <img src="/assets/images/projects/kantelemania/kantelemania-screenshot.webp" alt="Screenshot from the game Kantelemania" title="Screenshot from the game Kantelemania"/>
+  <img src="kantelemania-screenshot.webp" alt="Screenshot from the game Kantelemania" title="Screenshot from the game Kantelemania"/>
   <figcaption>Screenshot from the game</figcaption>
 </figure>
 

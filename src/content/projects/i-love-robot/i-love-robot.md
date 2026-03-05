@@ -3,7 +3,7 @@ title: "I, Love, Robot"
 date: "2018-04-23"
 description: "Robot Dating Simulator Duck Hunting Game made for Ludum Dare 41!"
 draft: false
-socialimage: "/assets/images/projects/robot/social-robot.jpg"
+socialimage: "social-robot.jpg"
 tags:
   - Video Game
   - Unity
@@ -15,7 +15,7 @@ sharedlink:
 ---
 
 <figure>
-  <img src="/assets/images/projects/robot/robot screenshot.webp" alt="Screenshot from the game I, Love, Robot" title="Screenshot from the game I, Love, Robot"/>
+  <img src="robot screenshot.webp" alt="Screenshot from the game I, Love, Robot" title="Screenshot from the game I, Love, Robot"/>
   <figcaption>Screenshot from the game</figcaption>
 </figure>
 

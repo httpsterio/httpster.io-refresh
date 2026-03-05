@@ -4,7 +4,7 @@ date: "2013-02-19"
 description: "An utterly silly, chaotic game jam game."
 writingtime: "2 hours"
 draft: false
-socialimage: "/assets/images/projects/studentlife/social-student-life.jpg"
+socialimage: "social-student-life.jpg"
 tags:
   - Video Game
   - Unity
@@ -21,7 +21,7 @@ After some brainstorming and sketching the first evening, we had a solid idea lo
 
 <figure>
   <video width="640" preload="auto" muted autoplay loop>
-    <source src="/assets/images/projects/studentlife/student-life-gameplay.webm" type="video/webm" />
+    <source src="student-life-gameplay.webm" type="video/webm" />
   </video>
   <figcaption>Can you keep up with the hectic student life?</figcaption>
 </figure>
