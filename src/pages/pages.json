@@ -1,4 +1,4 @@
 {
-  "layout": "layouts/page.njk",
-  "permalink": "/{{ title | slugify }}/index.html"
+  "layout": "layouts/page.vto",
+  "permalink": "/{{ title |> slugify }}/index.html"
 }

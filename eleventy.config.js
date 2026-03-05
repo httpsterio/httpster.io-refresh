@@ -1,7 +1,10 @@
 import path from "path";
+import { VentoPlugin } from "eleventy-plugin-vento";
 import { collections } from "./config/collections.js";
 
 export default function(config) {
+
+  config.addPlugin(VentoPlugin);
 
   // Passthrough Copy
   config.addPassthroughCopy("src/assets");
