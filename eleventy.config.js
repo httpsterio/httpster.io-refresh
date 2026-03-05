@@ -5,8 +5,12 @@ import { collections } from "./config/collections.js";
 
 export default function(config) {
 
+  // cache bust vento's cache to reload changed includes.
+  let ventoCache;
+  config.on("eleventy.beforeWatch", () => ventoCache?.clear());
+
   config.addPlugin(VentoPlugin, {
-    plugins: [],
+    plugins: [(env) => { ventoCache = env.cache; }],
     shortcodes: true,
     pairedShortcodes: true,
     filters: true,
@@ -44,6 +48,9 @@ export default function(config) {
       .replace(/(<source\b[^>]*\bsrc=")(?!https?:\/\/|\/|data:)([^"]+)(")/g,
         (_, pre, src, post) => `${pre}/${contentBase}/${src}${post}`);
   });
+
+  config.addWatchTarget("src/_includes/");
+  config.addWatchTarget("src/_includes/partials/");
 
   // Show device IP instead of just localhost
   config.setServerOptions({
