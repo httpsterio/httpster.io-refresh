@@ -3,4 +3,13 @@ layout: layouts/page.vto
 title: index
 ---
 
-hello
+<h1>Index</h1>
+
+{{ set postslist = collections.mainContent }}
+{{ for post of postslist }}
+
+<article class="">
+  <h2><time datetime="{{post.date}}">{{post.date |> toISOString().slice(0, 10) }}</time> — <a href="{{ post.url |> url }}">{{ post.data.title }}</a></h2>
+</article>
+
+{{ /for }}
