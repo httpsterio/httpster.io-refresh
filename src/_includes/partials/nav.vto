@@ -1,8 +1,5 @@
 <nav class="main-menu">
-  <a href="/">home</a>
-  <a href="/about/">about</a>
-  <a href="/articles/">articles</a>
-  <a href="/projects/">projects</a>
-  {{# <a href="/reviews/">reviews</a>
-  <a href="/echoes/">echoes</a> #}}
+  {{ for item of navigation.main }}
+  <a class="btn-nav" href="{{ item.url }}">{{ item.text }}</a>
+  {{ /for }}
 </nav>

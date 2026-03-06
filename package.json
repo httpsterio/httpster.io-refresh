@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "start": "eleventy --serve",
-    "build": "eleventy",
+    "build": "ELEVENTY_ENV=production eleventy",
     "debug": "DEBUG=Eleventy:* eleventy --serve"
   },
   "engines": {
