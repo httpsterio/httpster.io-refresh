@@ -1,44 +1,10 @@
 import path from "path";
-import { VentoPlugin } from "eleventy-plugin-vento";
 import { collections } from "./config/collections.js";
-import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
+import { plugins } from "./config/plugins.js";
 
 export default function(config) {
 
-  // cache bust vento's cache to reload changed includes.
-  let ventoCache;
-  config.on("eleventy.beforeWatch", () => ventoCache?.clear());
-
-  config.addPlugin(VentoPlugin, {
-    plugins: [(env) => { ventoCache = env.cache; }],
-    shortcodes: true,
-    pairedShortcodes: true,
-    filters: true,
-    autotrim: false,
-
-    ventoOptions: {
-      includes: path.resolve("src/_includes"),
-    },
-  });
-
-  config.addPlugin(syntaxHighlight, {
-    // Line separator for line breaks
-    lineSeparator: "<br>",
-    templateFormats: ["*"],
-
-    // Add codeblock class as well as block language
-    preAttributes: {
-      tabindex: 0,
-      class: function ({ language }) {
-        return `codeblock language-${language}`;
-      },
-      // Added in 4.1.0 you can use callback functions too
-      "data-language": function ({ language, content, options }) {
-        return language;
-      }
-    },
-    codeAttributes: {},
-  });
+  plugins(config);
 
   // Passthrough Copy
   config.addPassthroughCopy("src/assets");

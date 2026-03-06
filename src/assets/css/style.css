@@ -4,5 +4,6 @@
 @import "layout.css";
 @import "blocks/menu.css";
 @import "blocks/codeblock.css";
+@import "blocks/syntax.css";
 @import "blocks/button.css";
 @import "blocks/footer.css";
