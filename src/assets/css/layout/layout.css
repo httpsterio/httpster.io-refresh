@@ -3,14 +3,14 @@ html {
 }
 
 body {
-  background-color: blue;
   padding: var(--space-lg);
+  background-color: blue;
 }
 
 main {
   max-width: var(--max-width);
-  margin-inline: auto;
   background-color: white;
-  padding-inline: var(--space-lg);
+  margin-inline: auto;
   padding-block: var(--space-xs);
+  padding-inline: var(--space-lg);
 }

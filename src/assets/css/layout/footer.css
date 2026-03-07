@@ -1,9 +1,9 @@
 footer {
-  font-size: var(--text-xl);
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-md);
   justify-content: center;
-  margin-block: var(--space-sm);
   color: var(--color-light);
+  font-size: var(--text-xl);
+  gap: var(--space-md);
+  margin-block: var(--space-sm);
 }

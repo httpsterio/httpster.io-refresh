@@ -1,9 +1,9 @@
 .codeblock {
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
   padding: var(--space-md);
-  line-height: var(--text-base);
   box-shadow: 0.5rem 0.5rem 0 0 var(--color-tangerine), -0.5rem -0.5rem 0 0 var(--color-green);
+  line-height: var(--text-base);
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
 }
 
 .codeblock br {

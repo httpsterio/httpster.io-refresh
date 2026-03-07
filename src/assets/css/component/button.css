@@ -1,10 +1,10 @@
 .btn-nav {
-  background-color:rgb(97, 97, 97);
+  border: 2px solid #2e2e2e;
+  border-radius: 0.25rem;
+  background-color:rgb(97 97 97);
+  box-shadow: 0.25rem 0.25rem 0 0 black;
   color: var(--color-light);
   padding-inline: var(--space-sm);
-  border: 2px solid #2e2e2e;
-  box-shadow: 0.25rem 0.25rem 0 0 black;
   text-decoration: none;
   text-transform: uppercase;
-  border-radius: 0.25rem;
 }

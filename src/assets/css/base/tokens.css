@@ -1,10 +1,10 @@
 :root {
   /* Colors */
-  --color-bg: #ffffff;
+  --color-bg: #fff;
   --color-text: #1a1a1a;
   --color-text-muted: #6b6b6b;
   --color-border: #e0e0e0;
-  --color-link: #0066cc;
+  --color-link: #06c;
   --color-link-visited: #551a8b;
 
   --color-dark: #0c0c0c;
