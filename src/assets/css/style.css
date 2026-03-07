@@ -1,9 +1,11 @@
-@import "tokens.css";
-@import "reset.css";
-@import "typography.css";
-@import "layout.css";
-@import "blocks/menu.css";
-@import "blocks/codeblock.css";
-@import "blocks/syntax.css";
-@import "blocks/button.css";
-@import "blocks/footer.css";
+@import "base/reset.css";
+@import "base/syntax.css";
+@import "base/tokens.css";
+@import "base/typography.css";
+
+@import "layout/layout.css";
+@import "layout/footer.css";
+@import "layout/menu.css";
+
+@import "component/codeblock.css";
+@import "component/button.css";
