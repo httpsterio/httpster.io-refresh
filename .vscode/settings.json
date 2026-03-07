@@ -1,0 +1,18 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": "explicit"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.exclude": {
+    "**/_site": true,
+    "**/.claude": true,
+    "**/claude.md": true,
+    "**/.gitignore": false,
+    "**/.prettier*": true,
+    "**/.stylelint*": true
+  }
+}
