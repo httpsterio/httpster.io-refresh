@@ -12,7 +12,7 @@
     "**/.claude": true,
     "**/claude.md": true,
     "**/.gitignore": false,
-    "**/.prettier*": true,
-    "**/.stylelint*": true
+    "**/.prettier*": false,
+    "**/.stylelint*": false
   }
 }

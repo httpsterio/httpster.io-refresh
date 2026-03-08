@@ -1,0 +1,5 @@
+{{ set postslist = collections[collection || "mainContent"] }}
+
+{{ for post of postslist }}
+{{ include "partials/postitem.vto" post }}
+{{ /for }}

@@ -1,15 +1,8 @@
 ---
 layout: layouts/page.vto
-title: index
+title: Index
 ---
 
-<h1>Index</h1>
+<h1>{{ title }}</h1>
+{{ include "partials/postlist.vto" {collection: "articles"} }}
 
-{{ set postslist = collections.mainContent }}
-{{ for post of postslist }}
-
-<article class="">
-  <h2><time datetime="{{post.date}}">{{post.date |> toISOString().slice(0, 10) }}</time> — <a href="{{ post.url |> url }}">{{ post.data.title }}</a></h2>
-</article>
-
-{{ /for }}

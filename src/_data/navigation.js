@@ -1,24 +1,24 @@
 export default {
-main: [
+  main: [
     {
-      text: 'Index',
-      url: '/'
+      text: "Index",
+      url: "/",
     },
     {
-      text: 'About',
-      url: '/about/'
+      text: "About",
+      url: "/about/",
     },
-    // {
-    //   text: 'Articles',
-    //   url: '/articles/'
-    // },
-    // {
-    //   text: 'Projects',
-    //   url: '/projects/'
-    // },
     {
-      text: '/now',
-      url: 'https://sami.omg.lol/now'
-    }
-  ]
+      text: "Articles",
+      url: "/articles/",
+    },
+    {
+      text: "Projects",
+      url: "/projects/",
+    },
+    {
+      text: "/now",
+      url: "https://sami.omg.lol/now",
+    },
+  ],
 };
