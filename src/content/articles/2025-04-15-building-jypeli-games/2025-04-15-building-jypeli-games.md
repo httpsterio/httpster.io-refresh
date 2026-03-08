@@ -14,14 +14,14 @@ socialimage: ""
 
 1. [Intro](#intro)
 2. [Building for Windows](#building-for-windows)
-2.1. [Visual Studio](#visual-studio)
-2.2. [dotnet build](#dotnet-build)
-2.3. [Jetbrains Rider](#jetbrains-rider)
+   2.1. [Visual Studio](#visual-studio)
+   2.2. [dotnet build](#dotnet-build)
+   2.3. [Jetbrains Rider](#jetbrains-rider)
 3. [Building for MacOS](#building-for-macos)
-3.1. [dotnet publish](#dotnet-publish)
-3.2. [Bundling manually](#bundling-manually)
-3.3. [Bundling script](#bundling-script)
-3.4. [Removing the app from quarantine](#removing-the-app-from-quarantine)
+   3.1. [dotnet publish](#dotnet-publish)
+   3.2. [Bundling manually](#bundling-manually)
+   3.3. [Bundling script](#bundling-script)
+   3.4. [Removing the app from quarantine](#removing-the-app-from-quarantine)
 4. [Final thoughts](#final-thoughts)
 
 ## Intro
@@ -59,10 +59,12 @@ Visual Studio also has the possibility to _publish_ the game, but in my experien
 </PropertyGroup>
 ```
 
-If you go with this option, your game will end up in `bin/Release/net8.0/win-x64/publish/`. The SelfContained directive includes the .NET runtime in the published file, which will likely double or triple the game size, but it'll run more reliably without any extra installs required. You can also add 
+If you go with this option, your game will end up in `bin/Release/net8.0/win-x64/publish/`. The SelfContained directive includes the .NET runtime in the published file, which will likely double or triple the game size, but it'll run more reliably without any extra installs required. You can also add
+
 ```xml
 <PublishSingleFile>true</PublishSingleFile>
 ```
+
 in the property group to create a single exe without all the adjacent files, but I didn't manage to get it to work.
 
 If you have a .ico icon, you should also add it to the property group above like so:
@@ -102,6 +104,7 @@ If `PublishSingleFile` refuses to cooperate (which it might), just leave it out 
 Icons and other settings in your `.csproj` will be included, so make sure you've set those up as well.
 
 ### Jetbrains Rider
+
 Rider is my go-to for Jypeli projects. It’s fast, doesn’t get in the way, and makes building executables pretty painless. You’ll need the .NET 8.0 or .NET 10 SDK installed first. You should obviously also grab the [Rider](https://www.jetbrains.com/rider/) non-commercial version from their website.
 
 Rider will also read your `.csproj`, so make sure it's set up correctly.
@@ -111,7 +114,6 @@ To build a self-contained Windows `.exe`, set up a publish configuration:
 1. In the top menu, go to **Run** → **Edit Configurations**
 2. Click the **+** button and select **.NET: Publish to Folder**
 3. Fill in the options:
-
    - **Target location**: `/path/to/your/build/folder` or wherever you want the final build
    - **Configuration**: `Release | Any CPU`
    - **Target framework**: `net8.0`
@@ -130,7 +132,7 @@ This has the .NET runtime bundled, so the file size will be considerable, but at
 
 ## Building for MacOS
 
-Building a Jypeli for Mac is relatively simple. There's just one massive caveat—___signing and notarisation require a paid Apple developer license.___ 
+Building a Jypeli for Mac is relatively simple. There's just one massive caveat—**_signing and notarisation require a paid Apple developer license._**
 
 It's not the end of the world, you can still build and distribute your app for free. Your users just have to jump through a few hoops if you're not going to shell out the $99 a year for the developer license.
 
@@ -142,7 +144,8 @@ Let's look at the building and bundling first though!
 
 Install the .NET 8.0 SDK from [https://dotnet.microsoft.com/en-us/download](https://dotnet.microsoft.com/en-us/download). Make sure you're grabbing the correct one for your architechture, either arm64 or x64. Then open up the terminal and navigate to your project folder.
 
-If you're using an Apple Silicon based Mac, run this command: 
+If you're using an Apple Silicon based Mac, run this command:
+
 ```bash
 dotnet publish -c Release -r osx-arm64 --self-contained true /p:PublishSingleFile=false /p:IncludeNativeLibrariesForSelfExtract=true
 ```
@@ -178,6 +181,7 @@ mkdir -p MyApp.app/Contents/{MacOS,Resources} && touch MyApp.app/Contents/Info.p
 Move every file from the `/bin/Release/net8.0/osx-arm64/publish` inside the `MyApp.app/Contents/MacOS` folder.
 
 For the icon, you'll need a 1024x1024 pixel sized png image. Then run this command
+
 ```bash
 mkdir -p icon.iconset && sips -z 512 512 your-icon.png --out icon.iconset/icon_512x512.png && cp your-icon.png icon.iconset/icon_512x512@2x.png && iconutil -c icns icon.iconset -o icon.icns && rm -rf icon.iconset
 ```
@@ -186,11 +190,11 @@ This will take `your-icon.png`, create a downscaled 512x512 png and copy your ic
 
 Now, move the created `icon.icns` into the `MyApp.app/Contents/Resources` folder.
 
-Lastly, we'll fill in the `info.plist`. 
+Lastly, we'll fill in the `info.plist`.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" 
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
   "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -209,6 +213,7 @@ Lastly, we'll fill in the `info.plist`.
 </dict>
 </plist>
 ```
+
 Fill in the `${APP_NAME}` fields with your app name as well as `com.${PUBLISHER}.${APP_NAME}`, your publisher name.
 
 The last field, `<string>icon</string>` refers to your app icon. Make sure the value `icon`is changed to whatever you named your icns file as without the icns extension.
@@ -256,7 +261,7 @@ rsync -a --exclude="app.icns" "bin/Release/net8.0/osx-arm64/publish/Content/" "$
 # 6. Create Info.plist
 cat > "$APP_DIR/Contents/Info.plist" <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" 
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
   "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>

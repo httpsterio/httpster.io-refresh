@@ -1,0 +1,159 @@
+:root {
+  /* Colors */
+  --color-bg: #fff;
+  --color-text: #1a1a1a;
+  --color-text-muted: #6b6b6b;
+  --color-border: #e0e0e0;
+  --color-link: #06c;
+  --color-link-visited: #551a8b;
+
+  --color-dark: #0c0c0c;
+  --color-light: #f3f3f3;
+  --color-red: #e5633e;
+  --color-turquoise: #1ed397;
+  --color-green: #59d376;
+  --color-yellow: #fdb320;
+  --color-tangerine: #f18b2f;
+  --color-orange: #f79f28;
+  --color-blue: #1e29f9;
+  --color-purple: #4f0eb8;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+
+  /* Type scale */
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+
+  /* Fonts */
+  --font-sans: system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+
+  /* Layout */
+  --max-width: 100ch;
+
+  /* Extended tokens */
+  /* Font weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* Line heights */
+  --leading-tight: 1.2;
+  --leading-normal: 1.6;
+  --leading-loose: 2;
+
+  /* Border radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-full: 9999px;
+
+  /* Borders */
+  --border: 1px solid var(--color-border);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.08);
+  --shadow-md: 0 4px 12px rgb(0 0 0 / 0.1);
+
+  /* Z-index scale */
+  --z-below: -1;
+  --z-base: 0;
+  --z-raised: 10;
+  --z-overlay: 100;
+  --z-modal: 1000;
+}
+
+/* --- Layout primitives --- */
+
+/*
+ * Flow: vertical rhythm for prose/content.
+ * Override spacing per context: .flow { --flow-space: var(--space-lg); }
+ */
+.flow > * + * {
+  margin-block-start: var(--flow-space, var(--space-md));
+}
+
+/*
+ * Stack: flex column with consistent gap.
+ * Override: .stack { --stack-gap: var(--space-lg); }
+ */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--stack-gap, var(--space-md));
+}
+
+/*
+ * Cluster: flex row that wraps. Good for tags, nav items, button groups.
+ * Override alignment: .cluster { --cluster-align: flex-start; }
+ */
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: var(--cluster-align, center);
+  gap: var(--cluster-gap, var(--space-sm));
+}
+
+/*
+ * Grid: auto-fill responsive columns — no media queries needed.
+ * Override min column width: .grid { --grid-min: 30ch; }
+ */
+.grid {
+  display: grid;
+  gap: var(--grid-gap, var(--space-md));
+  grid-template-columns: repeat(auto-fill, minmax(var(--grid-min, 20ch), 1fr));
+}
+
+/* --- Accessibility --- */
+
+.sr-only {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  margin: -1px;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* --- Typography utilities --- */
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.text-sm {
+  font-size: var(--text-sm);
+}
+.text-lg {
+  font-size: var(--text-lg);
+}
+.text-xl {
+  font-size: var(--text-xl);
+}
+.text-2xl {
+  font-size: var(--text-2xl);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+}
+
+.font-bold {
+  font-weight: var(--font-weight-bold);
+}

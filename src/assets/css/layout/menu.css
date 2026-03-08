@@ -1,8 +1,9 @@
 .main-menu {
   display: flex;
+  max-width: var(--max-width);
   flex-wrap: wrap;
   justify-content: center;
-  font-size: var(--text-xl);
+  font-size: var(--text-lg);
   gap: var(--space-md);
   margin-block: var(--space-md);
 }
