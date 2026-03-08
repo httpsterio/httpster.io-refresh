@@ -14,5 +14,8 @@
     "**/.gitignore": false,
     "**/.prettier*": false,
     "**/.stylelint*": false
+  },
+  "[vento]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
   }
 }

@@ -17,6 +17,10 @@ export default {
       url: "/projects/",
     },
     {
+      text: "Grid",
+      url: "/grid/",
+    },
+    {
       text: "/now",
       url: "https://sami.omg.lol/now",
     },

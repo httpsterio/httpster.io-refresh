@@ -1,6 +1,6 @@
 ---
 title: Generating content driven CSS with Eleventy
-date: 2025-04-11
+date: "2025-04-11"
 description: Why spend an hour writing CSS when you can spend four hours
   creating classes on the fly?
 draft: false
@@ -11,6 +11,7 @@ tags:
   - Eleventy
 socialimage: /assets/images/articles/2025/cover-content-css.jpg
 ---
+
 If you've ever taken a peek at my [content stream](/main), you'll know that I use an assortment of colours to denote post categories.
 
 It took me a while to nail down how to achieve it. Creating the feature was surprisingly simple though once I had an understanding of the data cascade and how to utilize template files.
@@ -21,12 +22,11 @@ I'll demonstrate how I did it.
 
 ## Directory data files
 
-Eleventy has a handy thing called Directory data files[^1](%5Bhttps://www.11ty.dev/docs/data-template-dir/%5D\(https://www.11ty.dev/docs/data-template-dir/\)). They're JSON or JS files that can either compute or apply static values to the files in your directories.
+Eleventy has a handy thing called Directory data files[^1](<%5Bhttps://www.11ty.dev/docs/data-template-dir/%5D(https://www.11ty.dev/docs/data-template-dir/)>). They're JSON or JS files that can either compute or apply static values to the files in your directories.
 
 My content is separated into sub-folders. I have a `src/content/$content-type` layout for my categories, `$content-type` being my folders for the categories like `articles` or `projects`.
 
 If you create a `folder-name.json` file inside the similarily named directory, you can use that json file to prepopulate your YAML front matter. This means, you don't have to type `category: article` for every post you have. It's pretty nice. This is what my `projects.json` looks like:
-
 
 ```json
 {{ echo }}
@@ -39,10 +39,9 @@ If you create a `folder-name.json` file inside the similarily named directory, y
 {{ /echo }}
 ```
 
-
 So, this means that every post that is in `src/content/projects/` will get the specified layout, category, permalink and theme automatically set in the front matter for each post.
 
-> **n.b.** remember the data cascade[^2](%5Bhttps://www.11ty.dev/docs/layouts/#sources-of-data%5D\(https://www.11ty.dev/docs/layouts/#sources-of-data\)). If you set a value in your front matter in both the directory data file as well as the front matter in your layouts, the directory file will override the values. Use eleventyComputed to override the directory data file values.
+> **n.b.** remember the data cascade[^2](<%5Bhttps://www.11ty.dev/docs/layouts/#sources-of-data%5D(https://www.11ty.dev/docs/layouts/#sources-of-data)>). If you set a value in your front matter in both the directory data file as well as the front matter in your layouts, the directory file will override the values. Use eleventyComputed to override the directory data file values.
 
 ## CSS Variables
 
@@ -53,14 +52,14 @@ In my case, the colour `blue` and `light` are definied as a CSS variables and I'
 ```css
 :root {
   --colour-dark: #0c0c0c;
-  --colour-light: #F3F3F3;
+  --colour-light: #f3f3f3;
   --colour-red: #e5633e;
   --colour-turquoise: #1ed397;
-  --colour-green: #59D376;
-  --colour-yellow: #fdb320 ;
+  --colour-green: #59d376;
+  --colour-yellow: #fdb320;
   --colour-tangerine: #f18b2f;
   --colour-orange: #f79f28;
-  --colour-blue: #1E29F9;
+  --colour-blue: #1e29f9;
   --colour-purple: #4f0eb8;
 }
 ```
@@ -76,7 +75,6 @@ I'm using Nunjucks files as that's what I'm most familiar with, but I'd recommen
 I made a `themes.css.11ty.js` file and it looks like this:
 
 themes.css.11ty.js
-
 
 ```css
 {{ echo }}
@@ -133,9 +131,7 @@ module.exports = class {
 {{ /echo }}
 ```
 
-
 themes.css.njk
-
 
 ```js
 {{ echo }}
@@ -171,17 +167,12 @@ eleventyExcludeFromCollections: true
 {{ /echo }}
 ```
 
-
 _In short what the snippet above does:_
 
-*   Create a file called themes.css
-    
-*   Store the theme keys and values
-    
-*   Loop through the collections.posts and store each unique theme
-    
-*   For each unique theme, create a theme-$name class and use the theme\[0\] and theme\[1\] values for CSS
-    
+- Create a file called themes.css
+- Store the theme keys and values
+- Loop through the collections.posts and store each unique theme
+- For each unique theme, create a theme-$name class and use the theme\[0\] and theme\[1\] values for CSS
 
 This will render out to a regular CSS file with all of your themes as their own classes, but you could even take it one step further.
 
@@ -193,24 +184,21 @@ Now it's time to actually use the CSS we just created.
 
 First off, you'll want to include the created file. I also have added a hashing function to cache bust the file between builds.
 
-
 ```html
-{{ echo }}
-  {% set assetHash = global.random() %}
-  <link rel="stylesheet" href="/assets/css/themes.css?{{ assetHash }}" />
+{{ echo }} {% set assetHash = global.random() %}
+<link rel="stylesheet" href="/assets/css/themes.css?{{ assetHash }}" />
 {{ /echo }}
 ```
-
 
 In my Nunjucks template I can now access the CSS classes like so
 
-
 ```html
 {{ echo }}
-<article class="{% if post.data.theme %}theme-{{ post.data.theme[0] }}{% endif %}"></article>
+<article
+  class="{% if post.data.theme %}theme-{{ post.data.theme[0] }}{% endif %}"
+></article>
 {{ /echo }}
 ```
-
 
 So in the case of my projects, we're checking if the project file returns a theme value and then we add the `theme-blue` class to the article.
 

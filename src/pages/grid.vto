@@ -1,0 +1,642 @@
+---
+title: Grid
+layout: ""
+---
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>httpster.io // index</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap");
+
+    :root {
+      font-size: 16px;
+
+      /* Grid system */
+      --cell: 40px;
+      --half: calc(var(--cell) / 2);
+      --grid-color: rgba(180, 120, 30, 0.1);
+      --grid-accent: rgba(180, 120, 30, 0.06);
+      --grid-line: 1px;
+
+      /* Palette */
+      --bg: #08080a;
+      --surface: rgba(180, 120, 30, 0.04);
+      --surface-hover: rgba(180, 120, 30, 0.08);
+      --amber: #c8872e;
+      --amber-bright: #e6a235;
+      --amber-dim: rgba(200, 135, 46, 0.5);
+      --amber-faint: rgba(200, 135, 46, 0.25);
+      --green: #3ddc84;
+      --green-dim: rgba(61, 220, 132, 0.6);
+      --cyan: #5ec4b6;
+      --cyan-dim: rgba(94, 196, 182, 0.5);
+      --text: #c8c0b0;
+      --text-dim: rgba(200, 192, 176, 0.4);
+      --text-bright: #e8e0d0;
+
+      /* Bracket corners */
+      --b: 1px;
+      --l: 16px;
+      --bc: var(--amber-dim);
+
+      /* Layout */
+      --content-cols: 20;
+      --sidebar-cols: 8;
+      --gutter-cols: 1;
+      --total-cols: calc(var(--content-cols) + var(--gutter-cols) + var(--sidebar-cols));
+      --site-width: calc(var(--cell) * var(--total-cols));
+    }
+
+    @media (max-width: 1200px) {
+      :root {
+        --cell: 36px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      :root {
+        --cell: 32px;
+        --content-cols: 16;
+        --sidebar-cols: 0;
+        --gutter-cols: 0;
+        --total-cols: 16;
+      }
+    }
+
+    @media (max-width: 600px) {
+      :root {
+        --cell: 28px;
+        --total-cols: 12;
+        --content-cols: 12;
+      }
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.8125rem;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--bg);
+      min-height: 100vh;
+
+      /* Major grid lines */
+      /* background-image:
+        repeating-linear-gradient(to right,
+          var(--grid-color) 0 var(--grid-line),
+          transparent var(--grid-line) var(--cell)),
+        repeating-linear-gradient(to bottom,
+          var(--grid-color) 0 var(--grid-line),
+          transparent var(--grid-line) var(--cell)),
+        /* Sub-grid (half-cell) */
+      repeating-linear-gradient(to right,
+        var(--grid-accent) 0 var(--grid-line),
+        transparent var(--grid-line) var(--half)),
+      repeating-linear-gradient(to bottom,
+        var(--grid-accent) 0 var(--grid-line),
+        transparent var(--grid-line) var(--half));
+      */
+    }
+
+    /* ---- Site container ---- */
+    .site {
+      max-width: var(--site-width);
+      margin: 0 auto;
+      padding: var(--cell) 0;
+    }
+
+    /* ---- Navigation ---- */
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      padding: 0;
+      margin-bottom: var(--cell);
+      min-height: var(--cell);
+      flex-wrap: wrap;
+    }
+
+    .nav-brand {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--amber-bright);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      height: var(--cell);
+      display: flex;
+      align-items: center;
+      padding: 0 var(--half);
+      white-space: nowrap;
+    }
+
+    .nav-brand .dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      margin-right: var(--half);
+      box-shadow: 0 0 6px var(--green-dim);
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.4;
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      gap: 0;
+      margin-left: auto;
+    }
+
+    .nav-links a {
+      display: flex;
+      align-items: center;
+      height: var(--cell);
+      padding: 0 var(--half);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.03em;
+      border: var(--grid-line) solid transparent;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+      color: var(--amber-bright);
+      background: var(--surface);
+      border-color: var(--amber-faint);
+    }
+
+    .nav-links a::before {
+      content: "[";
+      color: var(--amber-dim);
+      margin-right: 4px;
+      font-weight: 300;
+    }
+
+    .nav-links a::after {
+      content: "]";
+      color: var(--amber-dim);
+      margin-left: 4px;
+      font-weight: 300;
+    }
+
+    /* ---- Status bar ---- */
+    .status-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--cell);
+      margin-bottom: var(--cell);
+      padding: 0 var(--half);
+      font-size: 0.6875rem;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-top: var(--grid-line) solid var(--grid-color);
+      border-bottom: var(--grid-line) solid var(--grid-color);
+    }
+
+    .status-bar .indicator {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-bar .indicator::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 4px var(--green-dim);
+    }
+
+    /* ---- Main layout ---- */
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr calc(var(--cell) * var(--sidebar-cols));
+      gap: calc(var(--cell) * var(--gutter-cols));
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+        gap: var(--cell);
+      }
+
+      .sidebar {
+        order: -1;
+      }
+    }
+
+    /* ---- Post cards ---- */
+    .posts {
+      display: flex;
+      flex-direction: column;
+      gap: var(--cell);
+    }
+
+    .card {
+      padding: var(--cell);
+      background-color: black;
+      transition: background-color 0.2s ease;
+
+      /* Corner brackets */
+      background-image:
+        /* top left */
+        linear-gradient(var(--bc), var(--bc)),
+        linear-gradient(var(--bc), var(--bc)),
+        /* top right */
+        linear-gradient(var(--bc), var(--bc)),
+        linear-gradient(var(--bc), var(--bc)),
+        /* bottom right */
+        linear-gradient(var(--bc), var(--bc)),
+        linear-gradient(var(--bc), var(--bc)),
+        /* bottom left */
+        linear-gradient(var(--bc), var(--bc)),
+        linear-gradient(var(--bc), var(--bc));
+      background-size:
+        var(--l) var(--b),
+        var(--b) var(--l),
+        var(--l) var(--b),
+        var(--b) var(--l),
+        var(--l) var(--b),
+        var(--b) var(--l),
+        var(--l) var(--b),
+        var(--b) var(--l);
+      background-position:
+        0 0,
+        0 0,
+        100% 0,
+        100% 0,
+        100% 100%,
+        100% 100%,
+        0 100%,
+        0 100%;
+      background-repeat: no-repeat;
+    }
+
+    .card:hover {
+      background-color: var(--surface-hover);
+      --bc: var(--amber);
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-bright);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .card-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .card-title a:hover {
+      color: var(--amber-bright);
+    }
+
+    .card-meta {
+      font-size: 0.6875rem;
+      color: var(--text-dim);
+      letter-spacing: 0.06em;
+      margin-bottom: calc(var(--half));
+      display: flex;
+      align-items: center;
+      gap: var(--half);
+      flex-wrap: wrap;
+    }
+
+    .card-meta .type {
+      color: var(--cyan-dim);
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: calc(var(--half));
+    }
+
+    .tag {
+      font-size: 0.6875rem;
+      color: var(--green);
+      padding: 2px 8px;
+      border: 1px solid rgba(61, 220, 132, 0.25);
+      border-radius: 2px;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .card-excerpt {
+      color: var(--text);
+      font-size: 0.8125rem;
+      line-height: 1.6;
+      max-width: 60ch;
+    }
+
+    /* ---- Sidebar ---- */
+    .sidebar {
+      min-width: 0;
+    }
+
+    .sidebar-header {
+      font-size: 0.75rem;
+      color: var(--amber-dim);
+      letter-spacing: 0.1em;
+      padding: 0 0 var(--half) 0;
+      margin-bottom: var(--half);
+      border-bottom: var(--grid-line) solid var(--grid-color);
+    }
+
+    .echoes {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .echo {
+      padding: var(--half) 0;
+      border-bottom: var(--grid-line) solid var(--grid-color);
+    }
+
+    .echo:last-child {
+      border-bottom: none;
+    }
+
+    .echo-time {
+      font-size: 0.625rem;
+      color: var(--amber-dim);
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .echo-text {
+      font-size: 0.75rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* ---- Footer ---- */
+    .footer {
+      margin-top: calc(var(--cell) * 2);
+      padding: var(--half);
+      font-size: 0.625rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: center;
+      border-top: var(--grid-line) solid var(--grid-color);
+      height: var(--cell);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ---- Decorative elements ---- */
+    .decoration {
+      position: fixed;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .crosshair {
+      position: fixed;
+      width: 12px;
+      height: 12px;
+      opacity: 0.15;
+    }
+
+    .crosshair::before,
+    .crosshair::after {
+      content: "";
+      position: absolute;
+      background: var(--amber);
+    }
+
+    .crosshair::before {
+      width: 12px;
+      height: 1px;
+      top: 50%;
+      left: 0;
+    }
+
+    .crosshair::after {
+      width: 1px;
+      height: 12px;
+      left: 50%;
+      top: 0;
+    }
+
+    .ch-1 {
+      top: 120px;
+      left: 15%;
+    }
+
+    .ch-2 {
+      top: 340px;
+      right: 12%;
+    }
+
+    .ch-3 {
+      bottom: 200px;
+      left: 20%;
+    }
+
+    .dot-indicator {
+      position: fixed;
+      width: 4px;
+      height: 4px;
+      background: var(--amber);
+      opacity: 0.2;
+    }
+
+    .di-1 {
+      top: 80px;
+      left: 30%;
+    }
+
+    .di-2 {
+      top: 240px;
+      right: 25%;
+    }
+
+    .di-3 {
+      bottom: 300px;
+      left: 10%;
+    }
+
+    .di-4 {
+      top: 500px;
+      right: 18%;
+    }
+
+    /* ---- Responsive sidebar as horizontal echoes on mobile ---- */
+    @media (max-width: 900px) {
+      .echoes {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: var(--half);
+      }
+
+      .echo {
+        border-bottom: none;
+        border-left: var(--grid-line) solid var(--grid-color);
+        padding: var(--half);
+      }
+    }
+
+    /* ---- Scanline overlay ---- */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 9999;
+      background: repeating-linear-gradient(to bottom,
+          transparent 0px,
+          transparent 2px,
+          rgba(0, 0, 0, 0.03) 2px,
+          rgba(0, 0, 0, 0.03) 4px);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Decorative crosshairs and dots -->
+  <div class="crosshair ch-1"></div>
+  <div class="crosshair ch-2"></div>
+  <div class="crosshair ch-3"></div>
+  <div class="dot-indicator di-1"></div>
+  <div class="dot-indicator di-2"></div>
+  <div class="dot-indicator di-3"></div>
+  <div class="dot-indicator di-4"></div>
+
+  <div class="site">
+    <!-- Navigation -->
+    <nav class="nav">
+      <a href="/" class="nav-brand">
+        <span class="dot"></span>
+        HTTPSTER.IO
+      </a>
+      <ul class="nav-links">
+        <li><a href="#">main feed</a></li>
+        <li><a href="#">about</a></li>
+        <li><a href="#">projects</a></li>
+        <li><a href="#">/now</a></li>
+        <li><a href="#">/changelog</a></li>
+        <li><a href="#">/subscribe</a></li>
+      </ul>
+    </nav>
+
+    <!-- Status bar -->
+    <div class="status-bar">
+      <span class="indicator">system operational</span>
+      <span>{{ new Date() |> toISOString().slice(0, 10) }}</span>
+      <span>[a href="status.md"]</span>
+    </div>
+
+    <!-- Main layout -->
+    <div class="layout">
+      <!-- Posts -->
+      <main class="posts">
+        {{ set postslist = collections[collection || "mainContent"] }}
+        {{ for post of postslist }}
+        {{ set tags = post.data.tags }}
+        <article class="card">
+          <h2 class="card-title">
+            <a href="#">{{ post.data.title }}</a>
+          </h2>
+          <div class="card-meta">
+            <span>{{ post.data.date }}</span>
+            <span class="type">$article</span>
+          </div>
+          <div class="card-tags">
+            {{ for tag of tags }}
+            <span class="tag">{{ tag }}</span>
+            {{ /for }}
+          </div>
+          <p class="card-excerpt">
+            {{ post.data.description }}
+          </p>
+        </article>
+        {{ /for }}
+
+      </main>
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">// echoes</div>
+        <div class="echoes">
+          <div class="echo">
+            <span class="echo-time">14:22 UTC</span>
+            <p class="echo-text">
+              Rebuilt the MOTD on severi again. ASCII art is a legitimate form
+              of self-expression and I will die on this hill.
+            </p>
+          </div>
+          <div class="echo">
+            <span class="echo-time">11:58 UTC</span>
+            <p class="echo-text">
+              Thinking about the 2003 Flash portfolio scene. That weird blend
+              of intense interaction and brutalist simplicity.
+            </p>
+          </div>
+          <div class="echo">
+            <span class="echo-time">09:30 UTC</span>
+            <p class="echo-text">
+              New Fish shell prompt is finally working. NGE quotes rotate on
+              each session. Small joys.
+            </p>
+          </div>
+          <div class="echo">
+            <span class="echo-time">07:15 UTC</span>
+            <p class="echo-text">
+              Sometimes I miss Gopher. Replicating the feel with modern tech
+              is a challenge.
+            </p>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span>httpster.io &mdash; system uptime: continuous &mdash; all nodes
+        nominal</span>
+    </footer>
+  </div>
+</body>
+
+</html>
