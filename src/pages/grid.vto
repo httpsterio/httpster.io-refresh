@@ -259,9 +259,13 @@ layout: ""
       gap: var(--cell);
     }
 
+    .posts a {
+      text-decoration: none;
+    }
+
     .card {
       padding: var(--cell);
-      background-color: black;
+      background-color: rgb(7, 11, 17);
       transition: background-color 0.2s ease;
 
       /* Corner brackets */
@@ -300,8 +304,8 @@ layout: ""
     }
 
     .card:hover {
-      background-color: var(--surface-hover);
-      --bc: var(--amber);
+      background-color: var(--amber-faint);
+      --bc: var(--green-dim);
     }
 
     .card-title {
@@ -391,9 +395,9 @@ layout: ""
       border-bottom: none;
     }
 
-    .echo-time {
-      font-size: 0.625rem;
-      color: var(--amber-dim);
+    .echo-title {
+      font-size: 0.8rem;
+      color: var(--amber-bright);
       letter-spacing: 0.08em;
       margin-bottom: 4px;
       display: block;
@@ -512,6 +516,17 @@ layout: ""
         border-left: var(--grid-line) solid var(--grid-color);
         padding: var(--half);
       }
+
+      .status-bar {
+        border: 0;
+        clip-path: inset(50%);
+        height: 1px;
+        margin: 0;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+      }
     }
 
     /* ---- Scanline overlay ---- */
@@ -574,23 +589,26 @@ layout: ""
         {{ set postslist = collections[collection || "mainContent"] }}
         {{ for post of postslist }}
         {{ set tags = post.data.tags }}
-        <article class="card">
-          <h2 class="card-title">
-            <a href="#">{{ post.data.title }}</a>
-          </h2>
-          <div class="card-meta">
-            <span>{{ post.data.date }}</span>
-            <span class="type">$article</span>
-          </div>
-          <div class="card-tags">
-            {{ for tag of tags }}
-            <span class="tag">{{ tag }}</span>
-            {{ /for }}
-          </div>
-          <p class="card-excerpt">
-            {{ post.data.description }}
-          </p>
-        </article>
+
+        <a href="{{ post.url }}">
+          <article class="card">
+            <h2 class="card-title">
+              {{ post.data.title }}
+            </h2>
+            <div class="card-meta">
+              <span>{{ post.data.date |> dateToISO }}</span>
+              <span class="type">${{ post.data.category }}</span>
+            </div>
+            <div class="card-tags">
+              {{ for tag of tags }}
+              <span class="tag">{{ tag }}</span>
+              {{ /for }}
+            </div>
+            <p class="card-excerpt">
+              {{ post.data.description }}
+            </p>
+          </article>
+        </a>
         {{ /for }}
 
       </main>
@@ -599,34 +617,15 @@ layout: ""
       <aside class="sidebar">
         <div class="sidebar-header">// echoes</div>
         <div class="echoes">
+          {{ set echoes = collections.echoes }}
+          {{ for echoitem of echoes }}
           <div class="echo">
-            <span class="echo-time">14:22 UTC</span>
+            <span class="echo-title">~$: cat {{ echoitem.data.title }}.md</span>
             <p class="echo-text">
-              Rebuilt the MOTD on severi again. ASCII art is a legitimate form
-              of self-expression and I will die on this hill.
+              {{ echoitem.content }}
             </p>
           </div>
-          <div class="echo">
-            <span class="echo-time">11:58 UTC</span>
-            <p class="echo-text">
-              Thinking about the 2003 Flash portfolio scene. That weird blend
-              of intense interaction and brutalist simplicity.
-            </p>
-          </div>
-          <div class="echo">
-            <span class="echo-time">09:30 UTC</span>
-            <p class="echo-text">
-              New Fish shell prompt is finally working. NGE quotes rotate on
-              each session. Small joys.
-            </p>
-          </div>
-          <div class="echo">
-            <span class="echo-time">07:15 UTC</span>
-            <p class="echo-text">
-              Sometimes I miss Gopher. Replicating the feel with modern tech
-              is a challenge.
-            </p>
-          </div>
+          {{ /for }}
         </div>
       </aside>
     </div>
