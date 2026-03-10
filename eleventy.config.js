@@ -2,6 +2,7 @@ import path from "path";
 import { collections } from "./config/collections.js";
 import { plugins } from "./config/plugins.js";
 import { filters } from "./config/filters.js";
+import { shortcodes } from "./config/shortcodes.js";
 
 export default function (config) {
   plugins(config);
@@ -20,6 +21,11 @@ export default function (config) {
   // Filters
   for (const [name, fn] of Object.entries(filters)) {
     config.addFilter(name, fn);
+  }
+
+  // Shortcodes
+  for (const [name, fn] of Object.entries(shortcodes)) {
+    config.addShortcode(name, fn);
   }
 
   // Rewrite relative media paths in content to match passthrough copy output location
